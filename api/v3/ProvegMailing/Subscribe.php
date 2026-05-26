@@ -28,7 +28,7 @@ function _civicrm_api3_proveg_mailing_Subscribe_spec(&$spec) {
  */
 function civicrm_api3_proveg_mailing_Subscribe($params) {
 
-  try{
+  try {
     $subscribeHandler = new CRM_ProvegAPI_MailingSubscribe();
     $subscribeHandler->handle_request($params);
 
@@ -40,7 +40,8 @@ function civicrm_api3_proveg_mailing_Subscribe($params) {
       $logger->log_subscription('ProVegApi');
     }
     return civicrm_api3_create_success("Created Subscription for {$subscribeHandler->get_contact_id()}");
-  } catch (Exception $e) {
-      throw new API_Exception("Error parsing Request. Message: '{$e->getMessage()}'");
+  }
+  catch (Exception $e) {
+    throw new API_Exception("Error parsing Request. Message: '{$e->getMessage()}'");
   }
 }

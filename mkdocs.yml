@@ -1,0 +1,27 @@
+site_name: ProVeg API
+site_description: Provides customized interfaces for applications to communicate with CiviCRM.
+site_author: Jens Schuppe
+repo_url: https://github.com/systopia/com.proveg.api
+
+theme:
+  name: material
+
+nav:
+  - Introduction: index.md
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - pymdownx.mark
+
+plugins:
+  - search:
+      lang: en
