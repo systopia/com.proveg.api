@@ -751,7 +751,7 @@ parameters:
 			path: api/v3/ProvegMailing/Subscribe.php
 
 		-
-			message: '#^Thrown exceptions in a catch block must bundle the previous exception \(see throw statement line 45\)\.$#'
+			message: '#^Thrown exceptions in a catch block must bundle the previous exception \(see throw statement line 50\)\.$#'
 			count: 1
 			path: api/v3/ProvegMailing/Subscribe.php
 

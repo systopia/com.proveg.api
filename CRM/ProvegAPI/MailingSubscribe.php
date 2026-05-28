@@ -51,7 +51,10 @@ class CRM_ProvegAPI_MailingSubscribe {
 
     $result = civicrm_api3('MailingEventSubscribe', 'create', $params);
     if ($result['is_error'] != '0') {
-      throw new API_Exception("Error Subscribing Contact {$this->contact_id} with Email {$this->email} to group {$this->group_id}. Error Message: {$result['error_message']}");
+      throw new API_Exception(
+        "Error Subscribing Contact {$this->contact_id} with Email {$this->email} "
+        . "to group {$this->group_id}. Error Message: {$result['error_message']}"
+      );
     }
     $this->hash = $result['values'][$result['id']]['hash'];
   }

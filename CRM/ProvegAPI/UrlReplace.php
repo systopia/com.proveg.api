@@ -58,7 +58,10 @@ class CRM_ProvegAPI_UrlReplace {
    * @param $content
    */
   private function parse_confirmation_parameters(&$content) {
-    $pattern = '/(?P<reset>reset=1&(amp;)?)(?P<contact_id>cid)(?P<contact_id_val>=[0-9]+&(amp;)?)(?P<subscribe_id>sid)(?P<subscribe_id_val>=[0-9]+&(amp;)?)(?P<hash>h)(?P<hash_val>=[a-z0-9]+)/';
+    $pattern = '/(?P<reset>reset=1&(amp;)?)'
+      . '(?P<contact_id>cid)(?P<contact_id_val>=[0-9]+&(amp;)?)'
+      . '(?P<subscribe_id>sid)(?P<subscribe_id_val>=[0-9]+&(amp;)?)'
+      . '(?P<hash>h)(?P<hash_val>=[a-z0-9]+)/';
     $content = preg_replace_callback($pattern, 'self::replace_callback', $content);
   }
 

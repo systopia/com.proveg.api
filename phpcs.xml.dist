@@ -5,7 +5,6 @@
 
     <file>api</file>
     <file>CRM</file>
-    <file>tests</file>
     <file>provegapi.php</file>
 
     <exclude-pattern>/CRM/Provegapi/DAO/.*\.php$</exclude-pattern>
@@ -46,6 +45,18 @@
     <rule ref="Drupal.Commenting.DocCommentStar.StarMissing">
         <exclude-pattern>provegapi\.php$</exclude-pattern>
         <exclude-pattern>/CRM/ProvegAPI/Form/Settings\.php$</exclude-pattern>
+    </rule>
+
+    <!-- Civix-scaffolded main file declares hook functions and requires civix bootstrap
+         in the same file — unavoidable for the civix pattern. -->
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>provegapi\.php$</exclude-pattern>
+    </rule>
+
+    <!-- Civix-scaffolded hook stubs are commented out by design and meant to be
+         uncommented when needed. -->
+    <rule ref="Squiz.PHP.CommentedOutCode.Found">
+        <exclude-pattern>provegapi\.php$</exclude-pattern>
     </rule>
 
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>

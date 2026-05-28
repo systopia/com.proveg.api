@@ -35,7 +35,8 @@ function civicrm_api3_proveg_selfservice_contactbyhash($params) {
         'id'                => $contact_id,
         'check_permissions' => 0,
       // TODO: extend here
-        'return'            => 'first_name,last_name,birth_date,prefix_id,custom_13,street_address,postal_code,city,custom_144',
+        'return'            => 'first_name,last_name,birth_date,prefix_id,custom_13,'
+        . 'street_address,postal_code,city,custom_144',
       ]);
 
       // add hash

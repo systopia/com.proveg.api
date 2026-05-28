@@ -210,7 +210,6 @@ class CRM_ProvegAPI_Processor {
         // fallback user needs configuration, and might probably be a security risk. Logging error for now
         // initial function not implemented
         Civi::log()->debug("[com.proveg.api] No API key provided for Uswr {$$userId}");
-        //        $session->set('userID', CRM_ProvegAPI_Configuration::getFallbackUserID());
       }
 
       $valid_user = CRM_Core_DAO::getFieldValue('CRM_Contact_DAO_Contact', $api_key, 'id', 'api_key');
