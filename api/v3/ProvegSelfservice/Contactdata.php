@@ -22,8 +22,7 @@
  * @return array API result array
  * @access public
  */
-function civicrm_api3_proveg_selfservice_contactdata($params)
-{
+function civicrm_api3_proveg_selfservice_contactdata($params) {
   // preprocess incoming call
   CRM_ProvegAPI_Processor::preprocessCall($params, 'ProvegSelfservice.contactdata');
 
@@ -47,25 +46,27 @@ function civicrm_api3_proveg_selfservice_contactdata($params)
       // update diet
       if (!empty($params['custom_13'])) {
         civicrm_api3('Contact', 'create', [
-            'id'        => $params['id'],
-            'custom_13' => [$params['custom_13']]
+          'id'        => $params['id'],
+          'custom_13' => [$params['custom_13']],
         ]);
       }
 
       // update interests
       if (!empty($params['custom_144'])) {
         civicrm_api3('Contact', 'create', [
-            'id'         => $params['id'],
-            'custom_144' => $params['custom_144']
+          'id'         => $params['id'],
+          'custom_144' => $params['custom_144'],
         ]);
       }
 
-      return civicrm_api3_create_success("contact updated");
-    } catch (Exception $ex) {
-      // not found
-      return civicrm_api3_create_error("Not found");
+      return civicrm_api3_create_success('contact updated');
     }
-  } else {
+    catch (Exception $ex) {
+      // not found
+      return civicrm_api3_create_error('Not found');
+    }
+  }
+  else {
     return civicrm_api3_create_error("Missing only parameter 'hash'.");
   }
 }
@@ -78,30 +79,30 @@ function civicrm_api3_proveg_selfservice_contactdata($params)
  */
 function _civicrm_api3_proveg_selfservice_contactdata_spec(&$params) {
   // CONTACT BASE
-  $params['hash'] = array(
-      'name'         => 'hash',
-      'api.required' => 0,
-      'title'        => 'Contact Hash',
-      'description'  => 'If given, triggers update',
-  );
-  $params['email'] = array(
+  $params['hash'] = [
+    'name'         => 'hash',
+    'api.required' => 0,
+    'title'        => 'Contact Hash',
+    'description'  => 'If given, triggers update',
+  ];
+  $params['email'] = [
     'name'           => 'email',
     'api.required'   => 0,
     'title'          => 'email address',
-    );
-  $params['first_name'] = array(
-      'name'         => 'first_name',
-      'api.required' => 0,
-      'title'        => 'First Name',
-  );
-  $params['last_name'] = array(
-      'name'         => 'last_name',
-      'api.required' => 0,
-      'title'        => 'Last Name',
-  );
-  $params['birth_date'] = array(
-      'name'         => 'birth_date',
-      'api.required' => 0,
-      'title'        => 'Birth Date',
-  );
+  ];
+  $params['first_name'] = [
+    'name'         => 'first_name',
+    'api.required' => 0,
+    'title'        => 'First Name',
+  ];
+  $params['last_name'] = [
+    'name'         => 'last_name',
+    'api.required' => 0,
+    'title'        => 'Last Name',
+  ];
+  $params['birth_date'] = [
+    'name'         => 'birth_date',
+    'api.required' => 0,
+    'title'        => 'Birth Date',
+  ];
 }

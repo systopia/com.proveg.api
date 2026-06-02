@@ -1,19 +1,20 @@
 <?php
-/*------------------------------------------------------------+
-| ProVeg API extension                                        |
-| Copyright (C) 2018 SYSTOPIA                                 |
-| Author: B. Endres (endres@systopia.de)                      |
-|         J. Schuppe (schuppe@systopia.de)                    |
-+-------------------------------------------------------------+
-| This program is released as free software under the         |
-| Affero GPL license. You can redistribute it and/or          |
-| modify it under the terms of this license which you         |
-| can read by viewing the included agpl.txt or online         |
-| at www.gnu.org/licenses/agpl.html. Removal of this          |
-| copyright header is strictly prohibited without             |
-| written permission from the original author(s).             |
-+-------------------------------------------------------------*/
-
+/**
+ * ------------------------------------------------------------+
+ * | ProVeg API extension                                        |
+ * | Copyright (C) 2018 SYSTOPIA                                 |
+ * | Author: B. Endres (endres@systopia.de)                      |
+ * |         J. Schuppe (schuppe@systopia.de)                    |
+ * +-------------------------------------------------------------+
+ * | This program is released as free software under the         |
+ * | Affero GPL license. You can redistribute it and/or          |
+ * | modify it under the terms of this license which you         |
+ * | can read by viewing the included agpl.txt or online         |
+ * | at www.gnu.org/licenses/agpl.html. Removal of this          |
+ * | copyright header is strictly prohibited without             |
+ * | written permission from the original author(s).             |
+ * +-------------------------------------------------------------
+ */
 class CRM_ProvegAPI_Configuration {
 
   protected static $config = NULL;
@@ -30,7 +31,8 @@ class CRM_ProvegAPI_Configuration {
     if (self::$config === NULL) {
       self::$config = CRM_Core_BAO_Setting::getItem('com.proveg.api', 'pvapi_config');
       if (self::$config === NULL) {
-        self::$config = []; // avoid re-loading
+        // avoid re-loading
+        self::$config = [];
       }
     }
 
@@ -50,18 +52,19 @@ class CRM_ProvegAPI_Configuration {
   public static function getSource($params, $key) {
     if (empty($params[$key])) {
       return self::getSetting('contribution_source_default', 'ProVeg API');
-    } else {
+    }
+    else {
       return trim($params[$key]);
     }
   }
-
 
   /**
    * Should all API calls be logged (debugging)
    * @return boolean
    */
   public static function logAPICalls() {
-    $log_calls = self::getSetting('log_api_calls', false);
+    $log_calls = self::getSetting('log_api_calls', FALSE);
     return !empty($log_calls);
   }
+
 }

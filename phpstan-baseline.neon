@@ -1,0 +1,935 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '''
+				#^Call to deprecated method value\(\) of class CRM_Utils_Array\:
+				In most cases this can be replaced with
+				  \$list\[\$key\] \?\? \$default
+				with the minor difference that when \$list\[\$key\] exists and is NULL, this function will always
+				return NULL\.$#
+			'''
+			identifier: staticMethod.deprecated
+			count: 1
+			path: CRM/ProvegAPI/Configuration.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 2
+			path: CRM/ProvegAPI/Configuration.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Configuration\:\:getSetting\(\) has parameter \$name with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Configuration.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Configuration\:\:getSource\(\) has parameter \$key with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Configuration.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Configuration\:\:getSource\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Configuration.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Configuration\:\:getSource\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: CRM/ProvegAPI/Configuration.php
+
+		-
+			message: '#^Parameter \#2 \$default_value of static method CRM_ProvegAPI_Configuration\:\:getSetting\(\) expects null, false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/ProvegAPI/Configuration.php
+
+		-
+			message: '#^Parameter \#2 \$default_value of static method CRM_ProvegAPI_Configuration\:\:getSetting\(\) expects null, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/ProvegAPI/Configuration.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_Configuration\:\:\$config has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/Configuration.php
+
+		-
+			message: '''
+				#^Call to deprecated method setItem\(\) of class CRM_Core_BAO_Setting\:
+				\- refer docs https\://docs\.civicrm\.org/dev/en/latest/framework/setting/$#
+			'''
+			identifier: staticMethod.deprecated
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '''
+				#^Call to deprecated method value\(\) of class CRM_Utils_Array\:
+				In most cases this can be replaced with
+				  \$list\[\$key\] \?\? \$default
+				with the minor difference that when \$list\[\$key\] exists and is NULL, this function will always
+				return NULL\.$#
+			'''
+			identifier: staticMethod.deprecated
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Call to static method getProfileList\(\) on an unknown class CRM_Xcm_Configuration\.$#'
+			identifier: class.notFound
+			count: 2
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Cannot access offset ''values'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Class HTML_QuickForm_element referenced with incorrect case\: HTML_QuickForm_Element\.$#'
+			identifier: class.nameCase
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 2
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Implicit array creation is not allowed \- variable \$settings might not exist\.$#'
+			identifier: variable.implicitArray
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Form_Settings\:\:buildQuickForm\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Form_Settings\:\:getList\(\) has parameter \$entity with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Form_Settings\:\:getList\(\) has parameter \$id_field with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Form_Settings\:\:getList\(\) has parameter \$label_field with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Form_Settings\:\:getList\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Form_Settings\:\:getList\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Form_Settings\:\:getRenderableElementNames\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Form_Settings\:\:getSettingsInForm\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Form_Settings\:\:postProcess\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Parameter \#1 \$defaultValues of method HTML_QuickForm\:\:setDefaults\(\) expects array\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Variable \$settings might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: CRM/ProvegAPI/Form/Settings.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Mailer\:\:__construct\(\) has parameter \$mailer with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Mailer.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Mailer\:\:send\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Mailer.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Mailer\:\:send\(\) has parameter \$body with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Mailer.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Mailer\:\:send\(\) has parameter \$headers with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Mailer.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Mailer\:\:send\(\) has parameter \$recipients with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Mailer.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_Mailer\:\:\$mailer has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/Mailer.php
+
+		-
+			message: '#^Access to an undefined property CRM_ProvegAPI_MailingSubscribe\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Cannot access offset ''error_message'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Cannot access offset ''id'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Cannot access offset ''is_error'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Instantiated class API_Exception not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Loose comparison via "\!\=" is not allowed\.$#'
+			identifier: notEqual.notAllowed
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_MailingSubscribe\:\:get_log_parameters\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_MailingSubscribe\:\:handle_parameters\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_MailingSubscribe\:\:handle_parameters\(\) has parameter \$parameters with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_MailingSubscribe\:\:handle_request\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_MailingSubscribe\:\:handle_request\(\) has parameter \$parameters with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_MailingSubscribe\:\:mailing_event_subscribe\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^PHPDoc tag @throws with type API_Exception is not subtype of Throwable$#'
+			identifier: throws.notThrowable
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^PHPDoc tag @throws with type API_Exception\|CiviCRM_API3_Exception is not subtype of Throwable$#'
+			identifier: throws.notThrowable
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^PHPDoc tag @throws with type CiviCRM_API3_Exception is not subtype of Throwable$#'
+			identifier: throws.notThrowable
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_MailingSubscribe\:\:\$contact_id has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_MailingSubscribe\:\:\$group_id has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_MailingSubscribe\:\:\$hash has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_MailingSubscribe\:\:\$xcm_params has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '#^Throwing object of an unknown class API_Exception\.$#'
+			identifier: class.notFound
+			count: 1
+			path: CRM/ProvegAPI/MailingSubscribe.php
+
+		-
+			message: '''
+				#^Call to deprecated method get_template_vars\(\) of class CRM_Core_SmartyCompatibility\:
+				since 5\.69 will be removed around 5\.79$#
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Cannot access offset ''id'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Cannot access offset ''values'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 4
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 6
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Loose comparison via "\!\=" is not allowed\.$#'
+			identifier: notEqual.notAllowed
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Loose comparison via "\=\=" is not allowed\.$#'
+			identifier: equal.notAllowed
+			count: 2
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:extractSubdata\(\) has parameter \$data with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:extractSubdata\(\) has parameter \$prefix with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:extractSubdata\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:fixAPIUser\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:getBulkmail\(\) has parameter \$contact_id with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:getContactID\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:preprocessCall\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:preprocessCall\(\) has parameter \$log_id with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:preprocessCall\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:renderTemplate\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:renderTemplate\(\) has parameter \$data with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:renderTemplate\(\) has parameter \$template_path with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:resolveContact\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:resolveContact\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:setBulkMail\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:setBulkMail\(\) has parameter \$bulk_email with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:setBulkMail\(\) has parameter \$contact_id with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:stripTechnicalFields\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Processor\:\:stripTechnicalFields\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Only booleans are allowed in a negated boolean, mixed given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strtolower expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Parameter \#1 \$string of function substr expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 2
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Parameter \#2 \$searchValue of static method CRM_Core_DAO\:\:getFieldValue\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_Processor\:\:\$technical_fields has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '#^Variable variables are not allowed\.$#'
+			identifier: variable.dynamicName
+			count: 1
+			path: CRM/ProvegAPI/Processor.php
+
+		-
+			message: '''
+				#^Call to deprecated method value\(\) of class CRM_Utils_Array\:
+				In most cases this can be replaced with
+				  \$list\[\$key\] \?\? \$default
+				with the minor difference that when \$list\[\$key\] exists and is NULL, this function will always
+				return NULL\.$#
+			'''
+			identifier: staticMethod.deprecated
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Cannot access offset ''count'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 7
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Greater\: string \(''1''\|''10''\|''11''\|''12''\|''13''\|''14''\|''15''\|''16''\|''17''\|''18''\|''19''\|''2''\|''20''\|''21''\|''22''\|''23''\|''24''\|''25''\|''26''\|''27''\|''28''\|''29''\|''3''\|''30''\|''31''\|''4''\|''5''\|''6''\|''7''\|''8''\|''9''\) in combination with non\-string \(1\) is not allowed\.$#'
+			identifier: voku.Greater
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Submission\:\:extractCampaign\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Submission\:\:extractCampaign\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Submission\:\:getContact\(\) has parameter \$contact_data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Submission\:\:getStartDate\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Submission\:\:shareWorkAddress\(\) has parameter \$contact_id with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Submission\:\:shareWorkAddress\(\) has parameter \$location_type_id with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_Submission\:\:shareWorkAddress\(\) has parameter \$organisation_id with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Parameter \#2 \$baseTimestamp of function strtotime expects int\|null, int\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Parameter \#2 \$default_value of static method CRM_ProvegAPI_Configuration\:\:getSetting\(\) expects null, int given\.$#'
+			identifier: argument.type
+			count: 2
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Parameter \#2 \$timestamp of function date expects int\|null, int\|false given\.$#'
+			identifier: argument.type
+			count: 2
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Part \$buffer \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: CRM/ProvegAPI/Submission.php
+
+		-
+			message: '#^Constant CIVICRM_UF_BASEURL not found\.$#'
+			identifier: constant.notFound
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:parse\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:parse\(\) has parameter \$content with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:parse_confirmation_endpoint\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:parse_confirmation_endpoint\(\) has parameter \$content with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:parse_confirmation_parameters\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:parse_confirmation_parameters\(\) has parameter \$content with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:parse_unsubscription_endpoint\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:parse_unsubscription_endpoint\(\) has parameter \$content with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:replace_callback\(\) has parameter \$matches with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Method CRM_ProvegAPI_UrlReplace\:\:replace_callback\(\) is unused\.$#'
+			identifier: method.unused
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Parameter \#2 \$callback of function preg_replace_callback expects callable\(array\<string\>\)\: string, ''self\:\:replace…'' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_UrlReplace\:\:\$baseurl has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_UrlReplace\:\:\$confirm_url has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Property CRM_ProvegAPI_UrlReplace\:\:\$unsubscribe_url has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/ProvegAPI/UrlReplace.php
+
+		-
+			message: '#^Function _civicrm_api3_proveg_mailing_Subscribe_spec\(\) has parameter \$spec with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: api/v3/ProvegMailing/Subscribe.php
+
+		-
+			message: '#^Function civicrm_api3_proveg_mailing_Subscribe\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: api/v3/ProvegMailing/Subscribe.php
+
+		-
+			message: '#^Function civicrm_api3_proveg_mailing_Subscribe\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: api/v3/ProvegMailing/Subscribe.php
+
+		-
+			message: '#^Instantiated class API_Exception not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: api/v3/ProvegMailing/Subscribe.php
+
+		-
+			message: '#^PHPDoc tag @throws with type API_Exception is not subtype of Throwable$#'
+			identifier: throws.notThrowable
+			count: 1
+			path: api/v3/ProvegMailing/Subscribe.php
+
+		-
+			message: '#^Parameter \#1 \$values of function civicrm_api3_create_success expects array\|int, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: api/v3/ProvegMailing/Subscribe.php
+
+		-
+			message: '#^Throwing object of an unknown class API_Exception\.$#'
+			identifier: class.notFound
+			count: 1
+			path: api/v3/ProvegMailing/Subscribe.php
+
+		-
+			message: '#^Thrown exceptions in a catch block must bundle the previous exception \(see throw statement line 50\)\.$#'
+			count: 1
+			path: api/v3/ProvegMailing/Subscribe.php
+
+		-
+			message: '#^Call to static method getContactIdFromHash\(\) on an unknown class CRM_Selfservice_HashLinks\.$#'
+			identifier: class.notFound
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactbyhash.php
+
+		-
+			message: '#^Cannot access offset ''hash'' on array\|int\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactbyhash.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactbyhash.php
+
+		-
+			message: '#^Function _civicrm_api3_proveg_selfservice_contactbyhash_spec\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactbyhash.php
+
+		-
+			message: '#^Function _civicrm_api3_proveg_selfservice_contactbyhash_spec\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactbyhash.php
+
+		-
+			message: '#^Function civicrm_api3_proveg_selfservice_contactbyhash\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactbyhash.php
+
+		-
+			message: '#^Function civicrm_api3_proveg_selfservice_contactbyhash\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactbyhash.php
+
+		-
+			message: '#^Call to static method getContactIdFromHash\(\) on an unknown class CRM_Selfservice_HashLinks\.$#'
+			identifier: class.notFound
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactdata.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 4
+			path: api/v3/ProvegSelfservice/Contactdata.php
+
+		-
+			message: '#^Function _civicrm_api3_proveg_selfservice_contactdata_spec\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactdata.php
+
+		-
+			message: '#^Function _civicrm_api3_proveg_selfservice_contactdata_spec\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactdata.php
+
+		-
+			message: '#^Function civicrm_api3_proveg_selfservice_contactdata\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactdata.php
+
+		-
+			message: '#^Function civicrm_api3_proveg_selfservice_contactdata\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactdata.php
+
+		-
+			message: '#^In function "civicrm_api3_proveg_selfservice_contactdata", caught "Exception" must be rethrown\. Either catch a more specific exception, add a "throw" clause in the "catch" block to propagate the exception or add a "// @ignoreException" comment\.$#'
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactdata.php
+
+		-
+			message: '#^Parameter \#1 \$values of function civicrm_api3_create_success expects array\|int, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: api/v3/ProvegSelfservice/Contactdata.php
+
+		-
+			message: '#^Function provegapi_civicrm_alterAPIPermissions\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_alterAPIPermissions\(\) has parameter \$action with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_alterAPIPermissions\(\) has parameter \$entity with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_alterAPIPermissions\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_alterAPIPermissions\(\) has parameter \$permissions with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_alterMailer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_alterMailer\(\) has parameter \$driver with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_alterMailer\(\) has parameter \$mailer with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_alterMailer\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_config\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_config\(\) has parameter \$config with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_enable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_install\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_permission\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: provegapi.php
+
+		-
+			message: '#^Function provegapi_civicrm_permission\(\) has parameter \$permissions with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: provegapi.php

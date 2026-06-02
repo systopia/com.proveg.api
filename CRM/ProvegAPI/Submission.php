@@ -1,19 +1,20 @@
 <?php
-/*------------------------------------------------------------+
-| ProVeg API extension                                        |
-| Copyright (C) 2017 SYSTOPIA                                 |
-| Author: B. Endres (endres@systopia.de)                      |
-|         J. Schuppe (schuppe@systopia.de)                    |
-+-------------------------------------------------------------+
-| This program is released as free software under the         |
-| Affero GPL license. You can redistribute it and/or          |
-| modify it under the terms of this license which you         |
-| can read by viewing the included agpl.txt or online         |
-| at www.gnu.org/licenses/agpl.html. Removal of this          |
-| copyright header is strictly prohibited without             |
-| written permission from the original author(s).             |
-+-------------------------------------------------------------*/
-
+/**
+ * ------------------------------------------------------------+
+ * | ProVeg API extension                                        |
+ * | Copyright (C) 2017 SYSTOPIA                                 |
+ * | Author: B. Endres (endres@systopia.de)                      |
+ * |         J. Schuppe (schuppe@systopia.de)                    |
+ * +-------------------------------------------------------------+
+ * | This program is released as free software under the         |
+ * | Affero GPL license. You can redistribute it and/or          |
+ * | modify it under the terms of this license which you         |
+ * | can read by viewing the included agpl.txt or online         |
+ * | at www.gnu.org/licenses/agpl.html. Removal of this          |
+ * | copyright header is strictly prohibited without             |
+ * | written permission from the original author(s).             |
+ * +-------------------------------------------------------------
+ */
 class CRM_ProvegAPI_Submission {
 
   /**
@@ -48,9 +49,10 @@ class CRM_ProvegAPI_Submission {
       }
       else {
         // Look up the country depending on the given ISO code.
-        $country = civicrm_api3('Country', 'get', array(
-            'check_permissions' => 0,
-            'iso_code' => $contact_data['country']));
+        $country = civicrm_api3('Country', 'get', [
+          'check_permissions' => 0,
+          'iso_code' => $contact_data['country'],
+        ]);
         if (!empty($country['id'])) {
           $contact_data['country_id'] = $country['id'];
           unset($contact_data['country']);
@@ -85,17 +87,19 @@ class CRM_ProvegAPI_Submission {
     $campaign_id = CRM_Utils_Array::value('campaign_id', $params, '');
     if (is_numeric($campaign_id)) {
       $campaign_id = (int) $campaign_id;
-    } else {
+    }
+    else {
       $campaign_id = '';
       if (!empty($params['campaign_code'])) {
         $campaign_code = strtoupper(trim($params['campaign_code']));
         $campaign_query = civicrm_api3('Campaign', 'get', [
-            'external_identifier' => $campaign_code,
-            'is_active'           => 1
+          'external_identifier' => $campaign_code,
+          'is_active'           => 1,
         ]);
         if (empty($campaign_query['id'])) {
           Civi::log()->debug("PVAPI: Campaign code '{$campaign_code}' not (uniquely) identified!");
-        } else {
+        }
+        else {
           $campaign_id = (int) $campaign_query['id'];
         }
       }
@@ -113,7 +117,7 @@ class CRM_ProvegAPI_Submission {
     $earliest = strtotime("now + {$buffer} days");
     while (date('j', $earliest) > 1) {
       // get to the next day
-      $earliest = strtotime("+1 day", $earliest);
+      $earliest = strtotime('+1 day', $earliest);
     }
     return date('Y-m-d', $earliest);
   }
@@ -143,20 +147,22 @@ class CRM_ProvegAPI_Submission {
     }
 
     // Check whether organisation has a WORK address.
-    $existing_org_addresses = civicrm_api3('Address', 'get', array(
+    $existing_org_addresses = civicrm_api3('Address', 'get', [
       'check_permissions' => 0,
       'contact_id'        => $organisation_id,
-      'location_type_id'  => $location_type_id));
+      'location_type_id'  => $location_type_id,
+    ]);
     if ($existing_org_addresses['count'] <= 0) {
       // Organisation does not have a WORK address.
       return FALSE;
     }
 
     // Check whether contact already has a WORK address.
-    $existing_contact_addresses = civicrm_api3('Address', 'get', array(
-        'check_permissions' => 0,
-        'contact_id'        => $contact_id,
-      'location_type_id'    => $location_type_id));
+    $existing_contact_addresses = civicrm_api3('Address', 'get', [
+      'check_permissions' => 0,
+      'contact_id'        => $contact_id,
+      'location_type_id'    => $location_type_id,
+    ]);
     if ($existing_contact_addresses['count'] > 0) {
       // Contact already has a WORK address.
       return FALSE;

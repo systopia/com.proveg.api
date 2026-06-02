@@ -19,7 +19,7 @@
  *
  *  Frontend for Contact.getsingle query by hash value
  *
- * @param array see specs below (_civicrm_api3_engage_signpetition_spec)
+ * @param array $params see specs below (_civicrm_api3_engage_signpetition_spec)
  * @return array API result array
  * @access public
  */
@@ -30,11 +30,13 @@ function civicrm_api3_proveg_selfservice_contactbyhash($params) {
   if (!empty($params['hash'])) {
     try {
       // first, load the contact base data
-      $contact_id =  CRM_Selfservice_HashLinks::getContactIdFromHash($params['hash']);
+      $contact_id = CRM_Selfservice_HashLinks::getContactIdFromHash($params['hash']);
       $data = civicrm_api3('Contact', 'getsingle', [
-          'id'                => $contact_id,
-          'check_permissions' => 0,
-          'return'            => 'first_name,last_name,birth_date,prefix_id,custom_13,street_address,postal_code,city,custom_144' // TODO: extend here
+        'id'                => $contact_id,
+        'check_permissions' => 0,
+      // TODO: extend here
+        'return'            => 'first_name,last_name,birth_date,prefix_id,custom_13,'
+        . 'street_address,postal_code,city,custom_144',
       ]);
 
       // add hash
@@ -44,11 +46,13 @@ function civicrm_api3_proveg_selfservice_contactbyhash($params) {
       $data['email'] = CRM_ProvegAPI_Processor::getBulkmail($data['id']);
 
       return $data;
-    } catch (CRM_Core_Exception $ex) {
-      // not found
-      return civicrm_api3_create_error("Not found");
     }
-  } else {
+    catch (CRM_Core_Exception $ex) {
+      // not found
+      return civicrm_api3_create_error('Not found');
+    }
+  }
+  else {
     return civicrm_api3_create_error("Missing only parameter 'hash'.");
   }
 }
@@ -61,10 +65,10 @@ function civicrm_api3_proveg_selfservice_contactbyhash($params) {
  */
 function _civicrm_api3_proveg_selfservice_contactbyhash_spec(&$params) {
   // CONTACT BASE
-  $params['hash'] = array(
-      'name'         => 'hash',
-      'api.required' => 1,
-      'title'        => 'Contact Hash',
-      'description'  => 'Needs to be valid',
-  );
+  $params['hash'] = [
+    'name'         => 'hash',
+    'api.required' => 1,
+    'title'        => 'Contact Hash',
+    'description'  => 'Needs to be valid',
+  ];
 }

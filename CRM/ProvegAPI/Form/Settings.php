@@ -41,8 +41,7 @@ class CRM_ProvegAPI_Form_Settings extends CRM_Core_Form {
         TRUE
     );
 
-
-//    Configuration ProvegMailing APi
+    //    Configuration ProvegMailing APi
     $this->add(
       'select',
       'mailing_xcm_profile',
@@ -55,7 +54,7 @@ class CRM_ProvegAPI_Form_Settings extends CRM_Core_Form {
       'text',
       'mailing_confirmation_endpoint',
       E::ts('Mailing Confirmation Endpoint'),
-      array("class" => "huge"),
+      ['class' => 'huge'],
       FALSE
     );
 
@@ -63,7 +62,7 @@ class CRM_ProvegAPI_Form_Settings extends CRM_Core_Form {
       'text',
       'mailing_unsubscription_endpoint',
       E::ts('Mailing Unsubscription Endpoint'),
-      array("class" => "huge"),
+      ['class' => 'huge'],
       FALSE
     );
 
@@ -71,10 +70,9 @@ class CRM_ProvegAPI_Form_Settings extends CRM_Core_Form {
       'text',
       'mailing_default_group_id',
       E::ts('Mailing default group'),
-      array("class" => "huge"),
+      ['class' => 'huge'],
       FALSE
     );
-
 
     /** Configuration for Donation API (discontinued)
     // add form elements
@@ -136,12 +134,11 @@ class CRM_ProvegAPI_Form_Settings extends CRM_Core_Form {
 
     */
 
-
     $this->addButtons([
         [
-            'type'      => 'submit',
-            'name'      => E::ts('Save'),
-            'isDefault' => TRUE,
+          'type'      => 'submit',
+          'name'      => E::ts('Save'),
+          'isDefault' => TRUE,
         ],
     ]);
 
@@ -152,7 +149,7 @@ class CRM_ProvegAPI_Form_Settings extends CRM_Core_Form {
   }
 
   public function postProcess() {
-    $values = $this->exportValues(null, true);
+    $values = $this->exportValues(NULL, TRUE);
     $settings_in_form = $this->getSettingsInForm();
     foreach ($settings_in_form as $name) {
       $settings[$name] = CRM_Utils_Array::value($name, $values, NULL);
@@ -167,7 +164,7 @@ class CRM_ProvegAPI_Form_Settings extends CRM_Core_Form {
    * @return array (string)
    */
   public function getRenderableElementNames() {
-    $elementNames = array();
+    $elementNames = [];
     foreach ($this->_elements as $element) {
       /** @var HTML_QuickForm_Element $element */
       $label = $element->getLabel();
@@ -209,13 +206,14 @@ class CRM_ProvegAPI_Form_Settings extends CRM_Core_Form {
    * @return array
    */
   protected function getSettingsInForm() {
-    return array(
+    return [
       'log_api_calls',
       'selfservice_xcm_profile',
       'mailing_xcm_profile',
       'mailing_confirmation_endpoint',
       'mailing_unsubscription_endpoint',
       'mailing_default_group_id',
-    );
+    ];
   }
+
 }

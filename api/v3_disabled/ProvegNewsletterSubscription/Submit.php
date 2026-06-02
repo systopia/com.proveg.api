@@ -40,43 +40,43 @@ function civicrm_api3_proveg_newsletter_subscription_submit($params) {
       throw new CRM_Core_Exception(
         'Mandatory key(s) missing from params array: email',
         'mandatory_missing',
-        array(
-          'fields' => array('email'),
+        [
+          'fields' => ['email'],
           'entity' => 'ProvegNewsletterSubscription',
           'action' => 'submit',
-        )
+        ]
       );
     }
     else {
       // Get the ID of the contact matching the given contact data, or create a
       // new contact if none exists for the given contact data.
-      $contact_data = array(
+      $contact_data = [
         'email' => $params['email'],
-      );
+      ];
       if (!$contact_id = CRM_ProvegAPI_Submission::getContact('Individual', $contact_data)) {
         throw new CRM_Core_Exception('Individual contact could not be found or created.', 'invalid_format');
       }
     }
 
-    $groupcontact = civicrm_api3('GroupContact', 'create', array(
+    $groupcontact = civicrm_api3('GroupContact', 'create', [
       'check_permissions'  => 0,
       'group_id'           => CRM_ProvegAPI_Configuration::getSetting('newsletter_group', 1000),
       'contact_id'         => $contact_id,
       'status'             => (!empty($params['newsletter']) ? 'Added' : 'Removed'),
-    ));
+    ]);
 
-    return civicrm_api3_create_success($groupcontact, $params, NULL, NULL, $dao = NULL, array());
+    return civicrm_api3_create_success($groupcontact, $params, NULL, NULL, $dao = NULL, []);
 
   }
-   catch (CRM_Core_Exception $exception) {
-     if (defined('PROVEG_API_LOGGING') && PROVEG_API_LOGGING) {
-       Civi::log()->debug('ProvegNewsletterSubscription:submit:Exception caught: ' . $exception->getMessage());
-     }
+  catch (CRM_Core_Exception $exception) {
+    if (defined('PROVEG_API_LOGGING') && PROVEG_API_LOGGING) {
+      Civi::log()->debug('ProvegNewsletterSubscription:submit:Exception caught: ' . $exception->getMessage());
+    }
 
-     $extraParams = $exception->getExtraParams();
+    $extraParams = $exception->getExtraParams();
 
-     return civicrm_api3_create_error($exception->getMessage(), $extraParams);
-   }
+    return civicrm_api3_create_error($exception->getMessage(), $extraParams);
+  }
 }
 
 /**
@@ -86,25 +86,25 @@ function civicrm_api3_proveg_newsletter_subscription_submit($params) {
  * @param $params
  */
 function _civicrm_api3_proveg_newsletter_subscription_submit_spec(&$params) {
-  $params['email'] = array(
+  $params['email'] = [
     'name'         => 'email',
     'title'        => 'Email',
     'type'         => CRM_Utils_Type::T_STRING,
     'api.required' => 0,
     'description'  => 'The contact\'s email.',
-  );
-  $params['newsletter'] = array(
+  ];
+  $params['newsletter'] = [
     'name'         => 'newsletter',
     'title'        => 'Newsletter',
     'type'         => CRM_Utils_Type::T_INT,
     'api.required' => 1,
     'description'  => 'Whether to subscribe to or remove the contact from the configured newsletter group.',
-  );
-  $params['contact_id'] = array(
+  ];
+  $params['contact_id'] = [
     'name' => 'contact_id',
     'title' => 'Contact ID',
     'type' => CRM_Utils_Type::T_INT,
     'api.required' => 0,
     'description' => 'The contact\'s ID.',
-  );
+  ];
 }

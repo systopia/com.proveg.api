@@ -19,7 +19,7 @@
  */
 class CRM_ProvegAPI_Processor {
 
-  private static $technical_fields = array('sequential', 'prettyprint', 'json', 'check_permissions', 'version');
+  private static $technical_fields = ['sequential', 'prettyprint', 'json', 'check_permissions', 'version'];
 
   /**
    * generic preprocessor for every call
@@ -75,8 +75,9 @@ class CRM_ProvegAPI_Processor {
    */
   public static function getBulkmail($contact_id) {
     $emails = civicrm_api3('Email', 'get', [
-        'contact_id' => $contact_id,
-        'option.limit' => 0]);
+      'contact_id' => $contact_id,
+      'option.limit' => 0,
+    ]);
     // try to find the bulk mail
     foreach ($emails['values'] as $email) {
       if (!empty($email['is_bulkmail'])) {
@@ -106,22 +107,25 @@ class CRM_ProvegAPI_Processor {
     if ($current_bulk_mail != $bulk_email) {
       // first: unset all current bulk mails
       $current_bulks = civicrm_api3('Email', 'get', [
-          'contact_id'   => $contact_id,
-          'option.limit' => 0,
-          'is_bulkmail'  => 1]);
+        'contact_id'   => $contact_id,
+        'option.limit' => 0,
+        'is_bulkmail'  => 1,
+      ]);
       foreach ($current_bulks['values'] as $email) {
         civicrm_api3('Email', 'create', [
-            'id'          => $email['id'],
-            'is_bulkmail' => 0]);
+          'id'          => $email['id'],
+          'is_bulkmail' => 0,
+        ]);
       }
 
       // then: find our email
       $existing_email = NULL;
       $existing_emails = civicrm_api3('Email', 'get', [
-          'contact_id'   => $contact_id,
-          'email'        => $bulk_email,
-          'option.limit' => 0,
-          'option.sort'  => 'is_primary asc']);
+        'contact_id'   => $contact_id,
+        'email'        => $bulk_email,
+        'option.limit' => 0,
+        'option.sort'  => 'is_primary asc',
+      ]);
       foreach ($existing_emails['values'] as $email) {
         $existing_email = $email;
       }
@@ -129,15 +133,17 @@ class CRM_ProvegAPI_Processor {
       if ($existing_email) {
         // exists => simply make bulk
         civicrm_api3('Email', 'create', [
-            'id'          => $existing_email['id'],
-            'is_bulkmail' => 1]);
+          'id'          => $existing_email['id'],
+          'is_bulkmail' => 1,
+        ]);
 
-      } else {
+      }
+      else {
         // doesn't exist => create
         civicrm_api3('Email', 'create', [
-            'contact_id'  => $contact_id,
-            'email'       => $bulk_email,
-            'is_bulkmail' => 1
+          'contact_id'  => $contact_id,
+          'email'       => $bulk_email,
+          'is_bulkmail' => 1,
         ]);
       }
     }
@@ -166,7 +172,7 @@ class CRM_ProvegAPI_Processor {
    * @return array the extracted data
    */
   public static function extractSubdata($prefix, &$data) {
-    $subdata = array();
+    $subdata = [];
     $prefix_length = strlen($prefix);
     $keys = array_keys($data);
     foreach ($keys as $key) {
@@ -201,10 +207,9 @@ class CRM_ProvegAPI_Processor {
       // Check and see if a valid secret API key is provided.
       $api_key = CRM_Utils_Request::retrieve('api_key', 'String', NULL, FALSE, NULL, 'REQUEST');
       if (!$api_key || strtolower($api_key) == 'null') {
-          // fallback user needs configuration, and might probably be a security risk. Logging error for now
-          // initial function not implemented
-          Civi::log()->debug("[com.proveg.api] No API key provided for Uswr {$$userId}");
-//        $session->set('userID', CRM_ProvegAPI_Configuration::getFallbackUserID());
+        // fallback user needs configuration, and might probably be a security risk. Logging error for now
+        // initial function not implemented
+        Civi::log()->debug("[com.proveg.api] No API key provided for Uswr {$$userId}");
       }
 
       $valid_user = CRM_Core_DAO::getFieldValue('CRM_Contact_DAO_Contact', $api_key, 'id', 'api_key');
@@ -225,7 +230,7 @@ class CRM_ProvegAPI_Processor {
 
     // first backup original variables, since smarty instance is a singleton
     $oldVars = $smarty->get_template_vars();
-    $backupFrame = array();
+    $backupFrame = [];
     foreach ($data as $key => $value) {
       $key = str_replace(' ', '_', $key);
       $backupFrame[$key] = isset($oldVars[$key]) ? $oldVars[$key] : NULL;
@@ -238,7 +243,7 @@ class CRM_ProvegAPI_Processor {
     }
 
     // create result
-    $rendered_text =  $smarty->fetch($template_path);
+    $rendered_text = $smarty->fetch($template_path);
 
     // reset smarty variables
     foreach ($backupFrame as $key => $value) {

@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="CiviCRM - Modified"
+         xsi:noNamespaceSchemaLocation="tools/phpcs/vendor/squizlabs/php_codesniffer/phpcs.xsd">
+    <description>CiviCRM coding standard with some additional changes</description>
+
+    <file>api</file>
+    <file>CRM</file>
+    <file>provegapi.php</file>
+
+    <exclude-pattern>/CRM/Provegapi/DAO/.*\.php$</exclude-pattern>
+    <!-- Vendored copy of https://github.com/systopia/Custom-Data-Helper — do not patch locally. -->
+    <exclude-pattern>/CRM/ProvegAPI/CustomData\.php$</exclude-pattern>
+    <!-- API endpoints kept on disk but no longer registered/active. -->
+    <exclude-pattern>/api/v3_disabled/.*\.php$</exclude-pattern>
+
+    <arg name="extensions" value="php"/>
+    <arg name="cache" value=".phpcs.cache"/>
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <!-- Exit with code 0 if warnings, but no error occurred -->
+    <config name="ignore_warnings_on_exit" value="true"/>
+
+    <rule ref="tools/phpcs/vendor/drupal/coder/coder_sniffer/Drupal">
+        <!-- Conflicts with PHPStan type hints -->
+        <exclude name="Drupal.Commenting.VariableComment.IncorrectVarType"/>
+        <exclude name="Drupal.Commenting.FunctionComment.ParamTypeSpaces"/>
+        <exclude name="Drupal.Commenting.FunctionComment.ReturnTypeSpaces"/>
+
+        <!-- Don't enforce phpdoc type hint because it (might) only duplicate a PHP type hint -->
+        <exclude name="Drupal.Commenting.VariableComment.MissingVar"/>
+
+        <!-- Don't enforce phpdoc type hint because it (might) only duplicate a PHP type hint -->
+        <exclude name="Drupal.Commenting.FunctionComment.ParamMissingDefinition"/>
+
+        <!-- False positive when license header is set and variable has no comment -->
+        <exclude name="Drupal.Commenting.VariableComment.WrongStyle"/>
+
+        <!-- Allow short-name class refs in @param when a use-statement is present. -->
+        <exclude name="Drupal.Commenting.DataTypeNamespace.DataTypeNamespace"/>
+    </rule>
+
+    <!-- Files containing commented-out PHP blocks (civix hook stubs / discontinued config sections);
+         PHPCBF would prefix every line with " * " and break the block. -->
+    <rule ref="Drupal.Commenting.DocCommentStar.StarMissing">
+        <exclude-pattern>provegapi\.php$</exclude-pattern>
+        <exclude-pattern>/CRM/ProvegAPI/Form/Settings\.php$</exclude-pattern>
+    </rule>
+
+    <!-- Civix-scaffolded main file declares hook functions and requires civix bootstrap
+         in the same file — unavoidable for the civix pattern. -->
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>provegapi\.php$</exclude-pattern>
+    </rule>
+
+    <!-- Civix-scaffolded hook stubs are commented out by design and meant to be
+         uncommented when needed. -->
+    <rule ref="Squiz.PHP.CommentedOutCode.Found">
+        <exclude-pattern>provegapi\.php$</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Generic.CodeAnalysis.EmptyStatement">
+        <exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCatch"/>
+    </rule>
+    <rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall"/>
+    <rule ref="Generic.Files.OneClassPerFile"/>
+    <rule ref="Generic.Files.OneInterfacePerFile"/>
+    <rule ref="Generic.Files.OneObjectStructurePerFile"/>
+    <rule ref="Generic.Files.OneTraitPerFile"/>
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+    <!-- TODO: legacy API methods (e.g. ProvegDonation/Submit) exceed the default complexity
+         threshold; a dedicated refactor is out of scope for the PHP 8.4 compat pass. -->
+    <!-- <rule ref="Generic.Metrics.CyclomaticComplexity"/> -->
+    <rule ref="Generic.Metrics.NestingLevel"/>
+    <rule ref="Generic.NamingConventions.AbstractClassNamePrefix"/>
+    <rule ref="Generic.NamingConventions.InterfaceNameSuffix"/>
+    <rule ref="Generic.NamingConventions.TraitNameSuffix"/>
+    <!-- TODO: re-enable Generic.PHP.RequireStrictTypes once a dedicated type-hint cleanup pass
+         has been done on the legacy API/CRM code; adding strict_types blindly to this extension
+         would turn pre-existing weak-type comparisons into TypeErrors at runtime. -->
+    <!-- <rule ref="Generic.PHP.RequireStrictTypes"/> -->
+    <rule ref="PSR1.Files.SideEffects"/>
+    <rule ref="PSR12.Classes.ClassInstantiation"/>
+    <rule ref="PSR12.Properties.ConstantVisibility"/>
+    <rule ref="Squiz.PHP.CommentedOutCode"/>
+    <rule ref="Squiz.PHP.GlobalKeyword"/>
+    <rule ref="Squiz.Strings.DoubleQuoteUsage">
+        <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
+    </rule>
+
+    <!-- Lines can be 120 chars long, but never show errors -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+
+    <!-- Ban some functions -->
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array">
+                <element key="sizeof" value="count"/>
+                <element key="delete" value="unset"/>
+                <element key="print" value="echo"/>
+                <element key="is_null" value="null"/>
+                <element key="create_function" value="null"/>
+            </property>
+        </properties>
+    </rule>
+</ruleset>

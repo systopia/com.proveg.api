@@ -1,19 +1,19 @@
 <?php
-/*------------------------------------------------------------+
-| ProVeg API extension                                        |
-| Copyright (C) 2018 SYSTOPIA                                 |
-| Author: P. Batroff (batroff@systopia.de)                    |
-+-------------------------------------------------------------+
-| This program is released as free software under the         |
-| Affero GPL license. You can redistribute it and/or          |
-| modify it under the terms of this license which you         |
-| can read by viewing the included agpl.txt or online         |
-| at www.gnu.org/licenses/agpl.html. Removal of this          |
-| copyright header is strictly prohibited without             |
-| written permission from the original author(s).             |
-+-------------------------------------------------------------*/
-
-
+/**
+ * ------------------------------------------------------------+
+ * | ProVeg API extension                                        |
+ * | Copyright (C) 2018 SYSTOPIA                                 |
+ * | Author: P. Batroff (batroff@systopia.de)                    |
+ * +-------------------------------------------------------------+
+ * | This program is released as free software under the         |
+ * | Affero GPL license. You can redistribute it and/or          |
+ * | modify it under the terms of this license which you         |
+ * | can read by viewing the included agpl.txt or online         |
+ * | at www.gnu.org/licenses/agpl.html. Removal of this          |
+ * | copyright header is strictly prohibited without             |
+ * | written permission from the original author(s).             |
+ * +-------------------------------------------------------------
+ */
 class CRM_ProvegAPI_MailingSubscribe {
 
   private $group_id = NULL;
@@ -51,7 +51,10 @@ class CRM_ProvegAPI_MailingSubscribe {
 
     $result = civicrm_api3('MailingEventSubscribe', 'create', $params);
     if ($result['is_error'] != '0') {
-      throw new API_Exception("Error Subscribing Contact {$this->contact_id} with Email {$this->email} to group {$this->group_id}. Error Message: {$result['error_message']}");
+      throw new API_Exception(
+        "Error Subscribing Contact {$this->contact_id} with Email {$this->email} "
+        . "to group {$this->group_id}. Error Message: {$result['error_message']}"
+      );
     }
     $this->hash = $result['values'][$result['id']]['hash'];
   }
@@ -75,7 +78,6 @@ class CRM_ProvegAPI_MailingSubscribe {
     ];
   }
 
-
   /**
    * @param $parameters
    */
@@ -95,7 +97,8 @@ class CRM_ProvegAPI_MailingSubscribe {
     if (isset($parameters['group_id'])) {
       $this->xcm_params['group_id'] = $parameters['group_id'];
       $this->group_id = $parameters['group_id'];
-    } else {
+    }
+    else {
       // get from Config
       $this->xcm_params['group_id'] = CRM_ProvegAPI_Configuration::getSetting('mailing_default_group_id');
     }
