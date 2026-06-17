@@ -22,7 +22,10 @@ use CRM_ProvegAPI_ExtensionUtil as E;
  */
 function provegapi_civicrm_permission(&$permissions) {
   //$permissions['access Donation API'] = 'API: access ProvegDonation API';
-  $permissions['access ProVeg API'] = 'API: access Proveg API';
+  $permissions['access ProVeg API'] = [
+    'label' => E::ts('API: access Proveg API'),
+    'description' => E::ts('Access the ProVeg API'),
+  ];
 }
 
 /**
